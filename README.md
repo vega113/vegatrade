@@ -1,0 +1,4 @@
+vegatrade
+=========
+
+Stocks prices prediction
