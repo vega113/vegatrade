@@ -7,17 +7,14 @@ if(isempty(total_pos_rets_ind) || isempty(num_of_stock_in_portfolio))
     curr_total_stock_value = 0;
     num_of_stock_in_portfolio  = zeros(0,1);
     total_pos_rets_ind = zeros(1,0);
-    isPrintStocks = false;
 else
     [k v] = size(num_of_stock_in_portfolio);
     if k > v
         num_of_stock_in_portfolio = num_of_stock_in_portfolio'; % it's stupid but it's because i cant' return zeros(0,1)
-        isPrintStocks = false;
         % only zeros(1,0)
     end
     if(size(num_of_stock_in_portfolio,2) == 1 && num_of_stock_in_portfolio(1) == 0)
         curr_total_stock_value = 0;
-        isPrintStocks = false;
     else
          curr_total_stock_value = num_of_stock_in_portfolio*(today_prices(total_pos_rets_ind))  ;
     end
@@ -37,10 +34,10 @@ else
         tradeColor = 'red';
     end
 end
-
+tradeColor = 'black';
 %out_txt = strcat(out_txt, ': ', char(stratgy_name),  '. cash: ',  num2str(TOTAL_CASH_MONEY),  ', stocks: ', num2str(curr_total_stock_value) , '. total: ',  num2str(sub_total) ,'. ');
 outTxt1 = strcat( '#', num2str(ii), ': ', char(stratgy_name),  '. cash: ',  num2str(TOTAL_CASH_MONEY),  ', stocks: ', num2str(curr_total_stock_value) , '. total: ',  num2str(sub_total) ,'. ');
-cprintf(tradeColor,outTxt1)
+fprintf(outTxt1);
 cash_history(ii) = sub_total;
 
 if isPrintStocks
@@ -75,14 +72,12 @@ if isPrintStocks
         end
        
         outTxt2 = strcat( '<',action,',', upDownInd, ',', num2str(today_prices(total_pos_rets_ind(jj))),',',num2str(tomorrow_prices(total_pos_rets_ind(jj))), ',',  num2str(num_of_stock_in_portfolio(jj)) , ',',  symbols(total_pos_rets_ind(jj),: ),  '> ' );
-       if(mod(jj,5) == -1)
-            cprintf(tradeColor,outTxt2);
-       end
+       fprintf(outTxt2);
         outTxt = strcat(outTxt1,outTxt2);
 
     end
+    disp(' ');
 end
 if ~exist('outTxt','var') || isempty(outTxt)
     outTxt='no game - weights are empty';
 end
-    disp(' ');

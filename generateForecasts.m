@@ -21,8 +21,7 @@ for ii=1:MAX_RUN_DAYS
         tomorrow_prices = today_prices;
     end
     currentWindowData       = sim_hist_data(:,ii:sim_today);
-%       [forecast_data]       = ForecastStocks(WINDOW_SIZE, 1, currentWindowData);
-        [forecast_data]       = ForecastStocksGarch(WINDOW_SIZE, 1, currentWindowData);
+        [forecast_data]       = ForecastStocks(WINDOW_SIZE, 1, currentWindowData);
         forecastHist(:,ii)    = forecast_data';
         elapsedTime = toc;
          timePerDay = elapsedTime/ii;
@@ -30,9 +29,9 @@ for ii=1:MAX_RUN_DAYS
             %make some statistics
             sprintf('time per 1 day is %4.2f\n',timePerDay)
              daysLeft = MAX_RUN_DAYS -ii;
-            sprintf('remaining time : %4.2f\n', daysLeft*timePerDay)
+             sprintf('remaining time : %4.2f\n', daysLeft*timePerDay)
         end
-       cprintf('blue','%s','*')
+        sprintf('%s','*')
     if mod(ii,40) == 0
         sprintf('\n')
     end

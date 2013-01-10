@@ -65,7 +65,7 @@ for ii=1:MAX_RUN_DAYS
     end
     currentWindowData       = sim_hist_data(:,ii:sim_today);
     forecast_data = forecastHist(:,ii)'  ;
-        disp(txtHeader);
+        sprintf(txtHeader);
     % for each strategy :
     for ss = 1:stratgs_num
         if ii > 1
@@ -86,7 +86,7 @@ for ii=1:MAX_RUN_DAYS
     end
     
     if mod(ii,100) == 0
-        strd = DATESTR(NOW);
+        strd = datestr(now);
         strtmp = strcat('time is ', strd, ' count is: ', num2str(ii));
         out_txt{ii}{ss+1} = strtmp;
         sendGMail([],out_txt{ii});

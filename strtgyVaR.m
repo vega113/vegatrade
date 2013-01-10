@@ -15,7 +15,7 @@
 %   * total_pos_rets_ind - vector of indexes of those stocks whose forecasted return is
 %        higher than Rf, only these stocks wil be bought
 %   
-function [amountOfStockInPortfolioPerTurn  indPositiveRetsAfterProtectFinal] = strtgyVaR(forecast_data, hist_data, today_prices, Rf, TOTAL_CASH_MONEY)
+function [amountOfStockInPortfolioPerTurn  indPositiveRetsAfterProtectFinal] = strtgyVaR(forecast_data, hist_data, today_prices, Rf, TOTAL_CASH_MONEY, cash_history)
 
 %constants
     MAX_VALUE_AT_RISK_PERCENT = 0.05;

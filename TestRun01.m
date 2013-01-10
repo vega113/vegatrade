@@ -1,15 +1,15 @@
 
 
 START_CAPITAL = 1000;
-MAX_RUN_DAYS  = 1400;
+MAX_RUN_DAYS  = 5;
 initWinSize    = 52; % 
 maxWinSize     = 52;
-stepWinSize    = 3; % should be >0 since we divide by it.
+stepWinSize    = 1; % should be >0 since we divide by it.
 stepStart      = 1;
 
  [new_hist_data new_symbols] = addBondsToHistData(hist_data,symbols, bonds);
  
-dateTimeStr = DATESTR(NOW);
+dateTimeStr = datestr(now);
 dateTimeStr =  regexprep(dateTimeStr, ':', '_');
 
 isShowPlot = 1;
@@ -77,16 +77,16 @@ for testWinInd = 1:1:  fix((maxWinSize- initWinSize)/(stepWinSize))+1
             fprintf(fid1, [num2str(currStrtgRetSeries(2,:)) '\n'] );
             fprintf(fid1, [num2str(meanRetSeries) '\n']);
             %-------------------------------------------
-            fprintf(fid2, [' strtgyVaR: ' num2str(cash_history{1}(end)) ]);
-            fprintf(fid2, [' simpleStrg: ' num2str(cash_history{2}(end)) ] );
-            tmp = (meanRetSeries*START_CAPITAL+ START_CAPITAL);
-            fprintf(fid2, [' mean: ' num2str( tmp(end) )  ]);
-            fprintf(fid2,  '\n ');
-
-            fprintf(fid2, [' ret strtgyVaR: ' num2str(currStrtgRetSeries(1,end)) ]);
-            fprintf(fid2,  [' ret simpleStrg: ' num2str(currStrtgRetSeries(2,end)) ] );
-            fprintf(fid2,'%s', [' ret mean: ' num2str(meanRetSeries(end))] );
-            fprintf(fid2,  '\n ');
+%             fprintf(fid2, [' strtgyVaR: ' num2str(cash_history{1}(end)) ]);
+%             fprintf(fid2, [' simpleStrg: ' num2str(cash_history{2}(end)) ] );
+%             tmp = (meanRetSeries*START_CAPITAL+ START_CAPITAL);
+%             fprintf(fid2, [' mean: ' num2str( tmp(end) )  ]);
+%             fprintf(fid2,  '\n ');
+% 
+%             fprintf(fid2, [' ret strtgyVaR: ' num2str(currStrtgRetSeries(1,end)) ]);
+%             fprintf(fid2,  [' ret simpleStrg: ' num2str(currStrtgRetSeries(2,end)) ] );
+%             fprintf(fid2,'%s', [' ret mean: ' num2str(meanRetSeries(end))] );
+%             fprintf(fid2,  '\n ');
             
             repStrtgRetSeries1(testWinInd,:) =  currStrtgRetSeries(1,end) ; 
             repStrtgRetSeries2(testWinInd,:) =  currStrtgRetSeries(2,end) ;

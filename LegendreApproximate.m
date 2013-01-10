@@ -69,7 +69,7 @@ if(mode == 1) % density
         end
     end
     intSum = 0;
-    intSum=trapSum(f,lowb,uppb); 
+    intSum=trapsum(f,lowb,uppb); 
     % calculate integral over[lowb,uppb] using the
     %trapezoid rule
     %     intsum = SymIntLeg(ck(1:n),lowb,uppb);%calculate

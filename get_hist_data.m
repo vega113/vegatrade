@@ -50,7 +50,7 @@ for i=1:sym_len
     end
 
 end
-dateStr = DATESTR(NOW);
+dateStr = datestr(now);
 date =  regexprep(dateStr, ':', '_');
 filename = strcat('new_hist_data_',date);
 symbols = newSymbols;

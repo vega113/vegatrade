@@ -30,7 +30,7 @@ meanRetSeries = mean(RetSeriesStocks,1);
 
 if isShowPlot == 1
 legendSymbols = strvcat( char(legendSymbols),'mean') ;
-saveDataFileName = strcat('./saved_data/d_',num2str(MAX_RUN_DAYS),'_c_',num2str(START_CAPITAL),'_w_',num2str(WINDOW_SIZE),'_', DATESTR(NOW));
+saveDataFileName = strcat('./saved_data/d_',num2str(MAX_RUN_DAYS),'_c_',num2str(START_CAPITAL),'_w_',num2str(WINDOW_SIZE),'_', datestr(now));
     hFig = figure;
     %hPlot = plot(xx,currStrtgRetSeries', '*-' ,xx, RetSeriesStocks' ,'o-',xx,meanRetSeries,'x--');
     hPlot = plot(xx,currStrtgRetSeries', '.-' ,xx,meanRetSeries,'x--');

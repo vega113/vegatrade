@@ -81,7 +81,7 @@ xlin=linspace(lowb,uppb,length(k));
 intSum = 0;
 i=2;
 while ( intSum <= 1 - cLevel & i < length(f_legendre) -2 )
-    intSum = trapSum(f_legendre(1:i),lowb,xlin(i));
+    intSum = trapsum(f_legendre(1:i),lowb,xlin(i));
     i=i+1;
     if(isnan(intSum) == 1) continue;
     end

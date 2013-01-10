@@ -1,4 +1,4 @@
-function [PortWts ] = avoidFastDownMarket(TOTAL_CASH_MONEY,cash_history,inPortWts,hist_data,indPositiveRetsAboveVaR)
+function [PortWts] = avoidFastDownMarket(TOTAL_CASH_MONEY,cash_history,inPortWts,hist_data,indPositiveRetsAboveVaR)
 
 len = (max(find(cash_history > 0) ) < 5);
 if ~(length(cash_history) > 2) ||  length(len) == 0

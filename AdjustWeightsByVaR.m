@@ -13,7 +13,9 @@ riskAdjustedPortWts = PortWts(port,:);
 for ii =1:numOfPort
     %let's create synthetic asset
     synthStock1{ii}= PortWts(ii,indPositiveRetsAboveVaR) * hist_data(indPositiveRetsAboveVaR,:);   %TODO maybe need to work with returns?
-    [VaR1(ii) deviation1(ii) isVaRAcceptedLRuc1(ii)] = LegVaR(synthStock1{ii}(lenData+1-MAX_WINDOW_VaR:lenData),VaR_CLEVEL,mode);
+    % [VaR1(ii) deviation1(ii) isVaRAcceptedLRuc1(ii)] = LegVaR(synthStock1{ii}(lenData+1-MAX_WINDOW_VaR:lenData),VaR_CLEVEL,mode); 
+    startIndex = max(1,lenData+1-MAX_WINDOW_VaR);
+    [VaR1(ii) deviation1(ii) isVaRAcceptedLRuc1(ii)] = LegVaR(synthStock1{ii}(startIndex:lenData),VaR_CLEVEL,mode);
     if(deviation1(ii)  > 0 && isVaRAcceptedLRuc1(ii) == 0 )
         VaR1(ii) = VaR1(ii) * MULT_MODIF_VAR_REJECTED_POSITIVE;
     end
